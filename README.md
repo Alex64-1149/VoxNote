@@ -1,4 +1,4 @@
-This code created by Jérémie Lestage and Alexandre Tancrède is meant to convert speach to text using AI on a mobile application.
+Ce code créé par Jérémie Lestage et Alexandre Tancrède a pour but de convertir des fichiers audios en fichiers textes à l'aide de l'IA et de l'implémenter sur le web.
 
-The AI speech recognition was inspired by :
+L'IA de reconnaissance vocale a été inspirée par :
   Kim and Park. Speech-to-Text-WaveNet. 2016. GitHub repository. https://github.com/buriburisuri/.
