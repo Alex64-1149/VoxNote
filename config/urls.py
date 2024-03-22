@@ -16,8 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from user import views as user_view
+from django.contrib.auth import views as auth
 
 urlpatterns = [
     path('', include('voxnote.urls')),
     path('admin/', admin.site.urls),
+    path('login/', user_view.user_login, name ='voxnote-login'),
+    path('logout/', auth.LogoutView.as_view(next_page ='voxnote-accueil'), name ='voxnote-logout'),
+    path('creerCompte/', user_view.creerCompte, name ='voxnote-register'),
 ]
