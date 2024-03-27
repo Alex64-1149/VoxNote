@@ -1,5 +1,69 @@
 {% extends 'voxnote/base.html' %}
 <!-- -->
-{% block content%}
-<h1> IA de reconnaisance vocale</h1>
-{% endblock content%}
+{% block content %}
+<h1>IA de reconnaissance vocale</h1>
+
+<button id="mic">
+    <span>mic</span>
+</button>
+
+<audio class="playback" controls></audio>
+
+
+<script>
+const mic_btn = document.querySelector('#mic');
+const playback = document.querySelector('.playback');
+let can_record = false;
+let is_recording = false;
+let recorder = null;
+let chunks = [];
+
+function setupAudio() {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({
+            audio: true
+        })
+        .then(setupStream)
+        .catch(err => {
+            console.error(err);
+        });
+    }
+}
+
+setupAudio();
+
+function setupStream(stream) {
+    recorder = new MediaRecorder(stream);
+
+    recorder.ondataavailable = e => {
+        chunks.push(e.data);
+    };
+
+    recorder.onstop = e => {
+        const blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" });
+        chunks = [];
+        const audioURL = window.URL.createObjectURL(blob);
+        playback.src = audioURL;
+        can_record = true;
+    };
+}
+
+function toggleMic() {
+    if (!can_record) return;
+
+    
+
+    if (!is_recording) {
+        recorder.start();
+        is_recording=true;
+        mic_btn.textContent = "Recording..."; // Update button text
+    } else {
+        recorder.stop();
+        is_recording=false;
+        mic_btn.textContent = "Start Recording"; // Update button text
+    }
+}
+
+mic_btn.addEventListener('click', toggleMic);
+</script>
+{% endblock content %}

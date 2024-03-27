@@ -22,7 +22,6 @@ def creerCompte(request):
 			######################### mail system #################################### 
 			
 			################################################################## 
-			messages.success(request, f'Your account has been created ! You are now able to log in')
 			return redirect('voxnote-login')
 	else:
 		form = UserRegisterForm()
@@ -44,7 +43,5 @@ def user_login(request):
 			form = login(request,user)
 			messages.success(request, f' welcome {username} !!')
 			return redirect('voxnote-accueil')
-		else:
-			messages.info(request, f'account done not exit plz sign in')
 	form = AuthenticationForm()
 	return render(request, 'user/login.html', {'form':form, 'title':'log in'})
