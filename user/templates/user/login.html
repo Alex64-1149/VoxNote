@@ -1,5 +1,5 @@
 {% extends "voxnote/base.html" %}
-{% block start %}
+{% block content %}
 
 <div class="content-section col-md-8 col-md-offset-2">
 
@@ -9,11 +9,11 @@
 	{{ form}}
 	</fieldset>
 
-	<button style="background: black; font-size: 2rem; padding:1%;" class="btn btn-outline-info" type="submit"><span class="glyphicon glyphicon-log-in"></span> Se connecter</button>
+	<button style="background: black; font-size: 2rem; padding:1%; color:white;" class="btn btn-outline-info" type="submit" ><span class="glyphicon glyphicon-log-in"></span>Connecter</button>
 
 <br/>
 <sub style="text-align: left;"><a href="{% url 'voxnote-register' %}" style="text-decoration: none; color: blue; padding:2%; cursor:pointer; margin-right:2%;">Créer un compte</a></sub>
 </form>
 
 </div>
-{% endblock start %}
+{% endblock content %}

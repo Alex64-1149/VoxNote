@@ -3,67 +3,82 @@
 {% block content %}
 <h1>IA de reconnaissance vocale</h1>
 
-<button id="mic">
-    <span>mic</span>
-</button>
+<button id="mic">Start/Stop Recording</button>
 
-<audio class="playback" controls></audio>
+<form  id="audio-form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="audio_file" style="display: none;">
+    <button type="submit">Générer une reponse</button>
+</form>
 
+<p id="generated-text">Texte généré: {% if recognized_text %}{{ recognized_text }}{% endif %}</p>
+
+<!-- <audio src="playback" controls></audio> -->
 
 <script>
-const mic_btn = document.querySelector('#mic');
-const playback = document.querySelector('.playback');
-let can_record = false;
-let is_recording = false;
-let recorder = null;
-let chunks = [];
+    const micBtn = document.querySelector('#mic');
+    const audioForm = document.querySelector('#audio-form'); // Reference to your form element
+    const playback = document.querySelector('.playback');
 
-function setupAudio() {
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({
-            audio: true
-        })
-        .then(setupStream)
-        .catch(err => {
-            console.error(err);
-        });
+    let isRecording = false;
+    let recorder;
+    let chunks = [];
+
+    micBtn.addEventListener('click', toggleRecording);
+
+    function toggleRecording() {
+        if (!isRecording) {
+            startRecording();
+        } else {
+            stopRecording();
+        }
+        isRecording = !isRecording;
     }
-}
 
-setupAudio();
-
-function setupStream(stream) {
-    recorder = new MediaRecorder(stream);
-
-    recorder.ondataavailable = e => {
-        chunks.push(e.data);
-    };
-
-    recorder.onstop = e => {
-        const blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" });
-        chunks = [];
-        const audioURL = window.URL.createObjectURL(blob);
-        playback.src = audioURL;
-        can_record = true;
-    };
-}
-
-function toggleMic() {
-    if (!can_record) return;
-
-    
-
-    if (!is_recording) {
-        recorder.start();
-        is_recording=true;
-        mic_btn.textContent = "Recording..."; // Update button text
-    } else {
-        recorder.stop();
-        is_recording=false;
-        mic_btn.textContent = "Start Recording"; // Update button text
+    function startRecording() {
+        navigator.mediaDevices.getUserMedia({ audio: true })
+            .then(stream => {
+                recorder = new MediaRecorder(stream);
+                recorder.ondataavailable = event => {
+                    chunks.push(event.data);
+                };
+                recorder.onstop = () => {
+                    const blob = new Blob(chunks, { type: 'audio/ogg; codecs=opus' });
+                    const audioFile = new File([blob], 'recorded_audio.ogg');
+                    const formData = new FormData();
+                    formData.append('audio_file', audioFile);
+                    fetch(audioForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRFToken': getCookie('csrftoken')
+                        }
+                    }).then(response => {
+                        // Handle response if needed
+                    }).catch(error => {
+                        console.error('Error submitting form:', error);
+                    });
+                    chunks = [];
+                };
+                recorder.start();
+            })
+            .catch(error => {
+                console.error('Error accessing microphone:', error);
+            });
     }
-}
 
-mic_btn.addEventListener('click', toggleMic);
+    function stopRecording() {
+        if (recorder && recorder.state === 'recording') {
+            recorder.stop();
+        }
+    }
+
+    function getCookie(name) {
+        const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+        return cookieValue ? cookieValue.pop() : '';
+    }
 </script>
+
+
+
 {% endblock content %}

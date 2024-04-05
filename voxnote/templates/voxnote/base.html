@@ -22,21 +22,12 @@
  
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
-  
+  <link rel="stylesheet" href="https://fonts.google.com/icons">
 
   
   
    <!-- message here -->
-  
-   {% if messages %}
-   {% for message in messages %}
-  
-   <script>
-     alert("{{ message }}");
-   </script>
-  
-   {% endfor %}
-   {% endif %}
+
 </head>
 
 <body>
@@ -64,14 +55,14 @@
                   <li><a href="{% url 'voxnote-notes' %}">Mes Notes</a></li>
                   {% if user.is_authenticated %}
                   <li>
-                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnecter</a>
                     <form id="logout-form" method="post" action="{% url 'voxnote-logout' %}" style="display: none;">
                         {% csrf_token %}
                     </form>
                 </li>
                   {% else %}
-                  <li><a href="{% url 'voxnote-register' %}"><span class="glyphicon glyphicon-user"></span>   Sign up</a></li>
-                  <li><a href="{% url 'voxnote-login' %}"><span class="glyphicon glyphicon-log-in"></span>   Log in</a></li>
+                  <li><a href="{% url 'voxnote-register' %}"><span class="glyphicon glyphicon-user"></span>Créer un compte</a></li>
+                  <li><a href="{% url 'voxnote-login' %}"><span class="glyphicon glyphicon-log-in">Connecter</span></a></li>
                   {% endif %}
        
                 </ul>
@@ -82,15 +73,6 @@
         <br/>
         <br>
         <br>
-        <div class="row">
-            {% block start %}
-            {% if user.is_authenticated %}
-            <h1>welcome back {{user.username}}!</h1>
-            {% else %}
-            <h1>log in, plz . . .</h1>
-            {% endif %}
-            {% endblock %}
-          </div>
     {% block content %}
     {% endblock content %} 
 </body>

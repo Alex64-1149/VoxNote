@@ -1,5 +1,5 @@
 {% extends "voxnote/base.html" %}
-{% block start %}
+{% block content %}
 
 <div class="content-section col-md-8 col-md-offset-2">
 <form method="POST" style="border: 1px solid black; margin: 4%; padding:10%; border-radius:1%;">
@@ -14,4 +14,4 @@
 	<sub><a href="{% url 'voxnote-login' %}" style="text-decoration: none; color: blue; padding:3%; cursor:pointer;">Déjà un compte ?</a></sub>
 </form>
 </div>
-{% endblock start %}
+{% endblock content %}
