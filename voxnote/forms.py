@@ -1,8 +1,8 @@
 # forms.py
 from django import forms
-from .models import MessageVocal
+from .models import Note
 
-class MessageVocalForm(forms.ModelForm):
+class NoteForm(forms.ModelForm):
     class Meta:
-        model = MessageVocal
-        fields = ['fichier_audio']
+        model = Note
+        fields = ['description']

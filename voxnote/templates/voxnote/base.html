@@ -1,78 +1,82 @@
 {% load static %}
-
+<!-- Charge les fichiers statiques tels que les fichiers CSS, JavaScript, etc. -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Balises meta pour définir l'encodage de caractères et la vue initiale -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titre de la page, conditionnel sur la variable 'title' -->
     {% if title %}
     <title>{{title}}</title>
     {% else %}
     <title>VoxNote</title>
     {% endif%}
 
-    <!-- bootstrap file -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <!-- bootstrap file-->
-   <!-- jQuery -->
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
- 
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-  <link rel="stylesheet" href="https://fonts.google.com/icons">
-
-  
-  
-   <!-- message here -->
-
+    <!-- Chargement des fichiers Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <!-- Chargement des fichiers jQuery et Font Awesome -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Police Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.google.com/icons">
 </head>
 
-<body>
-    <body class="container-fluid">
- 
- 
-        <header class="row">
-       
-          <!-- navbar-->
-          <nav class="navbar navbar-inverse navbar-fixed-top">
+<body class="container-fluid">
+    <!-- Corps du document, classe container-fluid pour occuper toute la largeur -->
+
+    <header class="row">
+        <!-- En-tête du document -->
+
+        <!-- Barre de navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
-              <div class="navbar-header">
-                <button class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" class="styleheader" href="{% url 'voxnote-accueil' %}">Voxnote</a>
-              </div>
-              <div class="collapse navbar-collapse" id="mainNavBar">
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="{% url 'voxnote-accueil' %}">Accueil</a></li>
-                  <li><a href="{% url 'voxnote-notes' %}">Mes Notes</a></li>
-                  {% if user.is_authenticated %}
-                  <li>
-                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnecter</a>
-                    <form id="logout-form" method="post" action="{% url 'voxnote-logout' %}" style="display: none;">
-                        {% csrf_token %}
-                    </form>
-                </li>
-                  {% else %}
-                  <li><a href="{% url 'voxnote-register' %}"><span class="glyphicon glyphicon-user"></span>Créer un compte</a></li>
-                  <li><a href="{% url 'voxnote-login' %}"><span class="glyphicon glyphicon-log-in">Connecter</span></a></li>
-                  {% endif %}
-       
-                </ul>
-              </div>
+                <div class="navbar-header">
+                    <!-- Bouton de bascule pour la navigation mobile -->
+                    <button class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Lien de la marque de la barre de navigation -->
+                    <a class="navbar-brand" class="styleheader" href="{% url 'voxnote-accueil' %}">Voxnote</a>
+                </div>
+                <!-- Contenu de la barre de navigation -->
+                <div class="collapse navbar-collapse" id="mainNavBar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- Liens de navigation -->
+                        <li><a href="{% url 'voxnote-accueil' %}">Accueil</a></li>
+                        <li><a href="{% url 'voxnote-notes' %}">Mes Notes</a></li>
+                        <!-- Si l'utilisateur est authentifié, affiche un lien de déconnexion, sinon affiche des liens de connexion et d'inscription -->
+                        {% if user.is_authenticated %}
+                        <li>
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnecter</a>
+                            <form id="logout-form" method="post" action="{% url 'voxnote-logout' %}" style="display: none;">
+                                {% csrf_token %}
+                            </form>
+                        </li>
+                        {% else %}
+                        <li><a href="{% url 'voxnote-register' %}"><span class="glyphicon glyphicon-user"></span>Créer un compte</a></li>
+                        <li><a href="{% url 'voxnote-login' %}"><span class="glyphicon glyphicon-log-in">Connecter</span></a></li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-          </nav>
-        </header>
-        <br/>
-        <br>
-        <br>
+        </nav>
+    </header>
+
+    <!-- Espaces réservés pour le contenu spécifique à chaque page -->
+    <br/>
+    <br>
+    <br>
     {% block content %}
     {% endblock content %} 
 </body>
