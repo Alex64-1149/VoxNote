@@ -17,6 +17,7 @@
 
     <!-- Chargement des fichiers Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'voxnote/css/styles.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
@@ -58,6 +59,7 @@
                         <!-- Si l'utilisateur est authentifié, affiche un lien de déconnexion, sinon affiche des liens de connexion et d'inscription -->
                         {% if user.is_authenticated %}
                         <li>
+                            
                             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnecter</a>
                             <form id="logout-form" method="post" action="{% url 'voxnote-logout' %}" style="display: none;">
                                 {% csrf_token %}

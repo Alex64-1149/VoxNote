@@ -2,7 +2,6 @@
 from django import forms
 from .models import Note
 
-class NoteForm(forms.ModelForm):
-    class Meta:
-        model = Note
-        fields = ['description']
+
+class AudioForm(forms.Form):
+    audio_file = forms.FileField()

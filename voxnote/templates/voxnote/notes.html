@@ -2,4 +2,11 @@
 <!-- -->
 {% block content%}
 <h1> Mes Notes</h1>
+<ul>
+    {% for note in user_notes %}
+        <li>{{ note.message }} - {{ note.user.username }} - {{ note.date }}</li>
+    {% empty %}
+        <li>Aucune note disponible</li>
+    {% endfor %}
+</ul>
 {% endblock content%}

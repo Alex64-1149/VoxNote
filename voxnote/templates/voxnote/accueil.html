@@ -17,15 +17,19 @@
     <!-- csrf_token est un jeton de sécurité CSRF pour empêcher les attaques CSRF -->
     <input type="file" name="audio_file" style="display: none;">
 
+    <button type="submit">Générer une réponse</button>
+
     
     <!-- Input pour sélectionner un fichier audio, mais caché car nous allons enregistrer l'audio directement -->
     <!--button type="submit">Générer une reponse</button -->
     <!-- Bouton pour soumettre le formulaire -->
 </form>
-<p id="generated-text">Texte généré:
-    {% if recognized_text %}
-        {{ recognized_text }}
-    {% endif %}</p>
+<div id="generated-text">
+    <p>Texte généré :</p>
+    <textarea readonly>{{ recognized_text }}</textarea>
+  </div>
+
+   
 <!-- Paragraphe pour afficher le texte généré par reconnaissance vocale -->
 
 <!-- <audio src="playback" controls></audio> -->

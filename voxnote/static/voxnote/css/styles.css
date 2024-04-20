@@ -1,0 +1,47 @@
+/* static/voxnote/css/styles.css */
+
+/* Styles pour la page Accueil */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#mic {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+#generated-text {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 80%;
+  text-align: center;
+}
+
+#generated-text textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+}
+  
+  /* Styles pour la page Mes notes */
+ 
+  
