@@ -9,7 +9,7 @@
 
 
 <!-- Un bouton pour démarrer ou arrêter l'enregistrement vocal -->
-<button id="mic">Commencer/Terminer l'enregistrement    </button>
+<button id="mic" class="btn btn-primary" style="margin-bottom: 20px;" >Commencer/Terminer l'enregistrement    </button>
 
 <form  id="audio-form" method="post" enctype="multipart/form-data">
     <!-- Formulaire pour envoyer le fichier audio enregistré -->
@@ -17,14 +17,14 @@
     <!-- csrf_token est un jeton de sécurité CSRF pour empêcher les attaques CSRF -->
     <input type="file" name="audio_file" style="display: none;">
 
-    <button type="submit">Générer une réponse</button>
+    <button type="submit" class="btn btn-primary">Générer une réponse</button>
 
     
     <!-- Input pour sélectionner un fichier audio, mais caché car nous allons enregistrer l'audio directement -->
     <!--button type="submit">Générer une reponse</button -->
     <!-- Bouton pour soumettre le formulaire -->
 </form>
-<div id="generated-text">
+<div id="generated-text" style="margin-top: 20px;">
     <p>Texte généré :</p>
     <textarea readonly>{{ recognized_text }}</textarea>
   </div>
@@ -129,6 +129,7 @@
         // Retourne la valeur du cookie s'il est trouvé, sinon retourne une chaîne vide
     }
 </script>
+
 
 {% endblock content %}
 <!-- Termine le bloc de contenu spécifique à ce template -->

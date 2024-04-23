@@ -8,6 +8,11 @@
   justify-content: center;
   height: 100vh;
 }
+.center {
+  width: 300px; /* Width of your div */
+  margin: 0 auto; /* Setting left and right margins to auto */
+  text-align: center; /* Optional, to center text inside the div */
+}
 
 #mic {
   background-color: #4CAF50;
