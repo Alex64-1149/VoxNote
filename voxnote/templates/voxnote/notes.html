@@ -1,12 +1,14 @@
 {% extends 'voxnote/base.html' %}
 <!-- -->
 {% block content%}
+<div class="container">
 <h1> Mes Notes</h1>
 <ul>
     {% for note in user_notes %}
-        <li>{{ note.message }} - {{ note.user.username }} - {{ note.date }}</li>
+        <li>{{ note.message }} - {{ note.date }}</li>
     {% empty %}
         <li>Aucune note disponible</li>
     {% endfor %}
 </ul>
+</div>
 {% endblock content%}
