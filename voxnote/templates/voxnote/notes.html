@@ -6,6 +6,7 @@
 <ul>
     {% for note in user_notes %}
         <li>{{ note.message }} - {{ note.date }}</li>
+        <a href="{% url 'voxnote-detail' note.pk %}"> Voir la Note </a>
     {% empty %}
         <li>Aucune note disponible</li>
     {% endfor %}

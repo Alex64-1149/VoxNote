@@ -1,0 +1,12 @@
+{% extends 'voxnote/base.html' %}
+{% block content%}
+<h1> Note </h1>
+
+<p>{{object.message}}</p>
+
+<div>
+    <a class="btn btn-outline-danger" href="{% url 'voxnote-delete' object.id %}">Supprimer</a>
+
+    <a href="{% url 'voxnote-notes' %}"> Revenir aux notes</a>
+</div>
+{% endblock content%}

@@ -1,0 +1,21 @@
+{% extends 'voxnote/base.html' %}
+
+{% block content %}
+
+<form method="post">{% csrf_token %}
+     
+ 
+ 
+ 
+    <p>Voulez vous vraiment supprimer la Note?</p>
+     
+     
+     
+     
+        <input type="submit" value="Confirmer">
+    </form>
+
+    <div>
+        <a href="{% url 'voxnote-detail' note.pk %}"> Revenir aux notes</a>
+    </div>
+{% endblock content %}
