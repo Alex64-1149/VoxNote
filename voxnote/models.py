@@ -14,4 +14,5 @@ class Note(models.Model):
         return reverse("voxnote-detail", kwargs={"pk":self.pk} )
 
 class Message(models.Model):
-    message=models.TextField
+    message=models.TextField()
+    date=models.DateTimeField(auto_now_add=True)

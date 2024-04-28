@@ -27,56 +27,41 @@ class NoteDeleteView(DeleteView):
 
 # Vue pour la page d'accueil de l'application
 def accueil(request):
-      # Initialisation du texte reconnu à "Allo"
-    user_notes = []  # Initialisation de la liste des notes de l'utilisateur à une liste vide
+    user_message = Message.objects.filter().order_by('-date')
+    if not user_message:
+        recognized_text='Texte généré par Voxnote'
+    else:
+        recognized_text=user_message[0].message
 
-    # Vérifie si l'utilisateur est connecté
-    
-
-    # Crée une instance du formulaire AudioForm
     audio_form = AudioForm()
 
-    # Vérifie si la requête HTTP est de type POST
     if request.method == 'POST':
-        # Crée une instance du formulaire AudioForm avec les données de la requête
         audio_form = AudioForm(request.POST, request.FILES)
-        # Vérifie si le formulaire est valide
         if audio_form.is_valid():
-            # Récupère le fichier audio depuis les données de la requête
             audio_file = request.FILES['audio_file']
-
-            # Affiche un message dans la console indiquant que le formulaire a été soumis avec succès
             print("Formulaire soumis avec succès")
 
-            # Crée le répertoire pour stocker les fichiers audio s'il n'existe pas
             media_directory = os.path.join(settings.MEDIA_ROOT, 'message_vocaux')
             os.makedirs(media_directory, exist_ok=True)
 
-            # Détermine le chemin complet du fichier audio à sauvegarder
             file_path = os.path.join(settings.MEDIA_ROOT, 'message_vocaux', audio_file.name)
-            # Sauvegarde le fichier audio sur le disque
             with open(file_path, 'wb') as destination:
                 for chunk in audio_file.chunks():
                     destination.write(chunk)
 
-            # Affiche dans la console le nom du fichier audio sauvegardé
             print(audio_file)
 
-            # Traite le fichier audio pour reconnaître le texte (pour l'instant, génère simplement un texte aléatoire)
             recognized_text = generate_random_string()
+            Message.objects.create(message=recognized_text)
             print("Nouveau texte généré:", recognized_text)
 
-            # Enregistre le texte reconnu dans la  base de données en tant que Note
             if request.user.is_authenticated:
                 note = Note.objects.create(user=request.user, message=recognized_text)
-                print('texte reconnu1:',recognized_text)    
-            
-        return render(request, "voxnote/accueil.html", {'recognized_text': recognized_text, 'audio_form': audio_form})
-                
-    else:
-         return render(request, "voxnote/accueil.html", { 'audio_form': audio_form})
-        
 
+            return redirect('voxnote-accueil')  # Redirige vers la vue accueil après avoir traité la requête POST
+
+    print('texte reconnu1:', recognized_text)
+    return render(request, "voxnote/accueil.html", {'recognized_text': recognized_text, 'audio_form': audio_form})
    
     
 
