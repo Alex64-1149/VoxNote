@@ -3,13 +3,19 @@
 {% block content%}
 <div class="container">
 <h1> Mes Notes</h1>
-<ul>
+<br>
+<br>
+<div class="notes-collumn">
     {% for note in user_notes %}
-        <li>{{ note.message }} - {{ note.date }}</li>
-        <a href="{% url 'voxnote-detail' note.pk %}"> Voir la Note </a>
+    <div class="card">
+        <p>{{ note.date }}</p>
+        <p>{{ note.message }}</p>
+        <a href="{% url 'voxnote-detail' note.pk %}">Voir la Note</a>
+    </div>
+    <br>
     {% empty %}
-        <li>Aucune note disponible</li>
+        <p>Aucune note disponible</p>
     {% endfor %}
-</ul>
+</div>
 </div>
 {% endblock content%}

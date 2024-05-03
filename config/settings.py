@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'voxnote',
     
     
+    
 ]
 
 MIDDLEWARE = [
@@ -135,5 +136,6 @@ MEDIA_URL = '/media/'
 
 # Configurer le moteur de stockage par défaut
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
 
 

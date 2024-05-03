@@ -2,11 +2,16 @@
 
 {% block content %}
 <div class="container">
-    <h1>IA de reconnaissance vocale</h1>
+    <h1>Voxnote</h1>
+    <h2>L'intelligence artificielle de reconnaissance vocale</h1>
     <!-- Titre de la page -->
-
+    
     <!-- Un bouton pour démarrer ou arrêter l'enregistrement vocal -->
-    <button id="mic" class="btn btn-primary" style="margin-bottom: 20px;">Commencer/Terminer l'enregistrement</button>
+    <button class="mic-toggle" id="mic">
+        <span class="material-symbols-outlined">
+            mic
+        </span>
+    </button>
 
     <form id="audio-form" method="post" enctype="multipart/form-data" style="display: none;">
         <!-- Formulaire pour envoyer le fichier audio enregistré -->
@@ -47,8 +52,10 @@
             // Fonction pour basculer entre démarrer et arrêter l'enregistrement
             if (!isRecording) {
                 startRecording();
+                micBtn.classList.add("is-recording");
             } else {
                 stopRecording();
+                micBtn.classList.remove("is-recording");
             }
             isRecording = !isRecording;
             // Inverse la valeur de isRecording
@@ -67,19 +74,23 @@
                     };
                     recorder.onstop = () => {
                         // Lorsque l'enregistrement s'arrête
-                        const blob = new Blob(chunks, { type: 'audio/ogg; codecs=opus' });
-                        // Crée un objet Blob à partir des données audio enregistrées
-                        const audioFile = new File([blob], 'recorded_audio.ogg');
-                        // Crée un objet fichier à partir du Blob
-                        const formData = new FormData();
-                        // Crée un nouvel objet FormData pour envoyer le fichier
-                        formData.append('audio_file', audioFile);
-                        // Ajoute le fichier audio au FormData
-                        sendAudio(formData);
-                        // Envoie automatiquement le formulaire
-                        chunks = [];
-                        // Réinitialise le tableau des chunks pour le prochain enregistrement
-                       
+                        if (chunks.length > 0) {
+                            const blob = new Blob(chunks, { type: 'audio/ogg; codecs=opus' });
+                            // Crée un objet Blob à partir des données audio enregistrées
+                            const audioFile = new File([blob], 'recorded_audio.ogg');
+                            // Crée un objet fichier à partir du Blob
+                            const formData = new FormData();
+                            // Crée un nouvel objet FormData pour envoyer le fichier
+                            formData.append('audio_file', audioFile);
+                            // Ajoute le fichier audio au FormData
+                            sendAudio(formData);
+                            // Envoie automatiquement le formulaire
+                            chunks = [];
+                            // Réinitialise le tableau des chunks pour le prochain enregistrement
+                        } else {
+                            console.error('Aucune donnée audio enregistrée.');
+                            // Affiche une erreur si aucune donnée audio n'a été enregistrée
+                        }
                     };
                     recorder.start();
                     // Démarre l'enregistrement audio
