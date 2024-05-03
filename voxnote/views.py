@@ -57,8 +57,8 @@ def accueil(request):
 
             if request.user.is_authenticated:
                 note = Note.objects.create(user=request.user, message=recognized_text)
-
-            return redirect('voxnote-accueil')  # Redirige vers la vue accueil après avoir traité la requête POST
+            print('redirect notes')
+            return redirect('voxnote-notes')  # Redirige vers la vue accueil après avoir traité la requête POST
 
     print('texte reconnu1:', recognized_text)
     return render(request, "voxnote/accueil.html", {'recognized_text': recognized_text, 'audio_form': audio_form})

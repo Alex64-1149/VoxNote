@@ -14,32 +14,17 @@
         <!-- csrf_token est un jeton de sécurité CSRF pour empêcher les attaques CSRF -->
 
         <input type="file" name="audio_file" style="display: none;">
-
-        
         <!-- Input pour sélectionner un fichier audio, mais caché car nous allons enregistrer l'audio directement -->
-
     </form>
 
     <div id="generated-text" style="margin-top: 20px;">
         <p>Texte généré:</p>
-         {% if recognized_text %}
-         <textarea readonly>{{recognized_text }}</textarea>
-         {% else %}
-         <textarea readonly>Texte généré par l'IA</textarea>
-         {% endif %}
-        <!--<p>Texte généré :</p>
-        {% if user_notes %}
-        <textarea readonly>{{ user_notes.first.message }}</textarea>
+        {% if recognized_text %}
+        <textarea readonly>{{recognized_text }}</textarea>
         {% else %}
         <textarea readonly>Texte généré par l'IA</textarea>
         {% endif %}
-        -->
     </div>
-
-    <!-- Paragraphe pour afficher le texte généré par reconnaissance vocale -->
-
-    <!-- <audio src="playback" controls></audio> -->
-    <!-- Un lecteur audio qui peut être utilisé pour lire l'enregistrement, mais est actuellement commenté -->
 
     <script>
         // JavaScript pour gérer l'enregistrement audio et les interactions avec l'utilisateur
@@ -49,9 +34,6 @@
 
         const audioForm = document.querySelector('#audio-form');
         // Sélectionne le formulaire pour envoyer l'enregistrement
-
-        const playback = document.querySelector('.playback');
-        // Sélectionne l'élément audio pour la lecture, mais est actuellement commenté
 
         let isRecording = false;
         let recorder;
@@ -127,6 +109,10 @@
                 }
             }).then(response => {
                 // Traite la réponse si nécessaire 
+                if (response.ok) {
+                    // Si la réponse est réussie, recharge la page
+                    location.reload();
+                }
             }).catch(error => {
                 console.error('Error submitting form:', error);
                 // Affiche une erreur s'il y a un problème lors de l'envoi du formulaire
@@ -144,4 +130,3 @@
 </div>
 
 {% endblock content %}
-<!-- Termine le bloc de contenu spécifique à ce template -->
