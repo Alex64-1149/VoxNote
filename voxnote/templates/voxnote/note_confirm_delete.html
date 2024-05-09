@@ -2,20 +2,15 @@
 
 {% block content %}
 
-<form method="post">{% csrf_token %}
-     
- 
- 
- 
-    <p>Voulez vous vraiment supprimer la Note?</p>
-     
-     
-     
-     
-        <input type="submit" value="Confirmer">
-    </form>
-
-    <div>
-        <a href="{% url 'voxnote-detail' note.pk %}"> Revenir aux notes</a>
+<div class="delete-note-container">
+  <form method="post">
+    {% csrf_token %}
+    <p>Voulez-vous vraiment supprimer la note?</p>
+    <div class="btn-delete-container">
+      <input type="submit" class="btn btn-outline-danger btn-confirm" value="Confirmer">
+      <a href="{% url 'voxnote-detail' note.pk %}" class="btn btn-outline-primary btn-return">Revenir aux notes</a>
     </div>
+  </form>
+</div>
+
 {% endblock content %}

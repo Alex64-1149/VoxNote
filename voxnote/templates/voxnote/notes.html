@@ -1,21 +1,24 @@
 {% extends 'voxnote/base.html' %}
 <!-- -->
 {% block content%}
-<div class="container">
-<h1> Mes Notes</h1>
+<div>
+<h1 class="note"> Mes Notes</h1>
 <br>
 <br>
-<div class="notes-collumn">
-    {% for note in user_notes %}
-    <div class="card">
-        <p>{{ note.date }}</p>
+{% if user.is_authenticated %}
+<div class="cards">
+{% for note in user_notes %}
+<div class="card">
+        <h5> {{note.date}} </h5>
         <p>{{ note.message }}</p>
         <a href="{% url 'voxnote-detail' note.pk %}">Voir la Note</a>
     </div>
-    <br>
     {% empty %}
-        <p>Aucune note disponible</p>
+        
     {% endfor %}
 </div>
+{% else %}
+<p style="text-align: center;">Veuillez vous connecter pour enregistrer des notes</p>
+{% endif %}
 </div>
 {% endblock content%}
