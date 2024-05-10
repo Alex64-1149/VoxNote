@@ -2,12 +2,12 @@
 
 {% block content %}
 <div class="container">
-    <h1>Voxnote</h1>
-    <h2>L'intelligence artificielle de reconnaissance vocale</h1>
+    <h1 class="titre-accueil">Voxnote</h1>
+    <h2 style="margin-top: 100px;">L'intelligence artificielle de reconnaissance vocale</h1>
     <!-- Titre de la page -->
     
     <!-- Un bouton pour démarrer ou arrêter l'enregistrement vocal -->
-    <button class="mic-toggle" id="mic">
+    <button style="margin-top: 100px;" class="mic-toggle" id="mic">
         <span class="material-symbols-outlined">
             mic
         </span>
@@ -23,7 +23,7 @@
     </form>
 
     <div id="generated-text" style="margin-top: 20px;">
-        <p>Texte généré:</p>
+        <p class="texte-genere">Texte généré:</p>
         {% if recognized_text %}
         <textarea readonly>{{recognized_text }}</textarea>
         {% else %}
@@ -75,9 +75,9 @@
                     recorder.onstop = () => {
                         // Lorsque l'enregistrement s'arrête
                         if (chunks.length > 0) {
-                            const blob = new Blob(chunks, { type: 'audio/ogg; codecs=opus' });
+                            const blob = new Blob(chunks, { type: 'audio/wav; codecs=opus' });
                             // Crée un objet Blob à partir des données audio enregistrées
-                            const audioFile = new File([blob], 'recorded_audio.ogg');
+                            const audioFile = new File([blob], 'recorded_audio.wav');
                             // Crée un objet fichier à partir du Blob
                             const formData = new FormData();
                             // Crée un nouvel objet FormData pour envoyer le fichier

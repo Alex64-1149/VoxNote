@@ -8,13 +8,22 @@
   justify-content: center;
   height: 100vh;
 }
+.titre-accueil{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 50px; 
+  font-weight: bold;
+}
 .center {
   width: 300px; /* Width of your div */
   margin: 0 auto; /* Setting left and right margins to auto */
   text-align: center; /* Optional, to center text inside the div */
 }
 .note {
+  margin-top: 100px;
+  margin-bottom: 100px;
   text-align: center;
+  font-weight: bold;
+  font-size: 50px;
 }
 
 .cards {
@@ -41,14 +50,14 @@
 .card h5 {
   margin-bottom: 10px;
   font-family: Arial, sans-serif; /* Changer la police */
-  font-size: 18px; /* Taille de la police */
+  font-size: 20px; /* Taille de la police */
   
 }
 
 .card p {
   margin-bottom: 20px;
   font-family: Arial, sans-serif; /* Changer la police */
-  font-size: 16px; /* Taille de la police */
+  font-size: 20px; /* Taille de la police */
   
 }
 
@@ -61,6 +70,8 @@
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s;
+  font-family: Arial, sans-serif; /* Changer la police */
+  font-size: 20px; /* Taille de la police */
 }
 
 .card a:hover {
@@ -105,7 +116,10 @@
 }
 
 .note-content {
+  font-family: Arial, sans-serif; /* Changer la police */
+  font-size: 30px; /* Taille de la police */
   margin-bottom: 20px;
+  
 }
 
 .btn-container {
@@ -122,6 +136,8 @@
   color: #fff;
   background-color: #dc3545;
   border-color: #dc3545;
+  font-family: Arial, sans-serif; /* Changer la police */
+  font-size: 20px; /* Taille de la police */
   margin-right: 10px;
 }
 
@@ -129,6 +145,8 @@
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
+  font-family: Arial, sans-serif; /* Changer la police */
+  font-size: 20px; /* Taille de la police */
   margin-left: 10px;
 }
 .delete-note-container {
@@ -143,7 +161,8 @@
   border-radius: 10px;
   background-color: #f9f9f9;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .btn-delete-container { 
@@ -155,6 +174,8 @@
   background-color: #dc3545;
   border-color: #dc3545;
   margin-right: 10px;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .btn-return {
@@ -168,7 +189,18 @@
 }
 
 .about-heading {
+  font-size: 50px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 100px;
+}
+.about-description{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+}
+.texte-genere {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -276,6 +308,7 @@ margin-bottom: 4rem;
   border: 1px solid #ccc;
   border-radius: 10px;
   width: 80%;
+  height: 30%;
   text-align: center;
 }
 
@@ -286,7 +319,8 @@ margin-bottom: 4rem;
   background-color: transparent;
   resize: none;
   outline: none;
-  font-size: 16px;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
   color: #333;
 }
   
