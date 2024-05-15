@@ -1,0 +1,329 @@
+/* static/voxnote/css/styles.css */
+
+/* Styles pour la page Accueil */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.titre-accueil{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 50px; 
+  font-weight: bold;
+}
+.center {
+  width: 300px; /* Width of your div */
+  margin: 0 auto; /* Setting left and right margins to auto */
+  text-align: center; /* Optional, to center text inside the div */
+}
+.note {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+/* CSS pour chaque note */
+.card {
+  width: calc(33.33% - 20px);
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 15px; /* Augmente la forme carrée */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px; /* Réduit l'espace interne */
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  text-align: center; /* Centre le texte à l'intérieur de la carte */
+}
+
+/* Styling du texte à l'intérieur de la carte */
+.card h5 {
+  margin-bottom: 10px;
+  font-family: Arial, sans-serif; /* Changer la police */
+  font-size: 20px; /* Taille de la police */
+  
+}
+
+.card p {
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif; /* Changer la police */
+  font-size: 20px; /* Taille de la police */
+  
+}
+
+/* Styling du bouton "Voir la Note" */
+.card a {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  font-family: Arial, sans-serif; /* Changer la police */
+  font-size: 20px; /* Taille de la police */
+}
+
+.card a:hover {
+  background-color: #0056b3;
+}
+
+/* CSS pour rendre les notes moins larges sur les écrans larges */
+@media screen and (min-width: 1200px) {
+  .card {
+      width: calc(30% - 20px);
+  }
+}
+
+/* CSS pour rendre les notes moins larges sur les écrans moyens */
+@media screen and (max-width: 768px) {
+  .card {
+      width: calc(45% - 20px);
+  }
+}
+
+/* CSS pour rendre les notes moins larges sur les écrans étroits */
+@media screen and (max-width: 480px) {
+  .card {
+      width: calc(100% - 20px);
+  }
+}
+.note-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  height: 50%; /* La note occupe la moitié de la hauteur de l'écran */
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  text-align: center;
+  font-size: 1.5em; /* taille de police de la note */
+  overflow: auto;
+}
+
+.note-content {
+  font-family: Arial, sans-serif; /* Changer la police */
+  font-size: 30px; /* Taille de la police */
+  margin-bottom: 20px;
+  
+}
+
+.btn-container {
+  position: absolute;
+  top: 50%; /* Les boutons sont positionnés au milieu verticalement */
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 100%;
+  text-align: center;
+  margin-top: 20px; /* Espacement des boutons par rapport à la note */
+}
+
+.btn-delete {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  font-family: Arial, sans-serif; /* Changer la police */
+  font-size: 20px; /* Taille de la police */
+  margin-right: 10px;
+}
+
+.btn-return {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  font-family: Arial, sans-serif; /* Changer la police */
+  font-size: 20px; /* Taille de la police */
+  margin-left: 10px;
+}
+.delete-note-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  text-align: center;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-delete-container { 
+  margin-top: 40px;
+}
+
+.btn-confirm {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  margin-right: 10px;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-return {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.about-container {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.about-heading {
+  font-size: 50px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 100px;
+}
+.about-description{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+}
+.texte-genere {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+
+
+
+.mic-toggle {
+
+position: relative;
+display: block;
+width: 8rem;
+height: 8rem;
+border-radius: 50%;
+background-color: crimson;
+margin-bottom: 4rem;
+}
+
+.mic-toggle:after,
+.mic-toggle:before {
+  --pad: 0rem;
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 0;
+  background-color: rgba(220, 20, 60,0.2);
+  top: var(--pad);
+  left: var(--pad);
+  right: var(--pad);
+  bottom: var(--pad);
+  border-radius: 50%;
+
+}
+
+.mic-toggle:after{
+  transition: 0.4s;
+
+}
+
+.mic-toggle:after{
+  transition: 0.4s;
+  
+}
+
+.mic-toggle:hover:before{
+  --pad: -1rem;
+}
+
+.mic-toggle:hover:after{
+  --pad:-2rem
+}
+
+.mic-toggle span{
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: 6rem;
+
+
+}
+
+.mic-toggle.is-recording:after{
+  animation: smoothPadAfter 0.6s ease-in alternate-reverse forwards infinite;
+}
+
+.mic-toggle.is-recording:before{
+  animation: smoothPadAfter 0.6s ease-in alternate-reverse forwards infinite;
+}
+@keyframes smoothPadAfter{
+  0%{
+    top: -2rem;
+    left: -2rem;
+    right: -2rem;
+    bottom: -2rem;
+  }
+
+  100%{
+    top: -1rem;
+    left: -1rem;
+    right: -1rem;
+    bottom: -1rem;
+  }
+}
+
+@keyframes smoothPadBefore{
+  0%{
+    top: -1rem;
+    left: -1rem;
+    right: -1rem;
+    bottom: -1rem;
+  }
+
+  100%{
+    top: -0.5rem;
+    left: -0.5rem;
+    right: -0.5rem;
+    bottom: -0.5rem;
+  }
+}
+
+
+#generated-text {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 80%;
+  height: 30%;
+  text-align: center;
+}
+
+#generated-text textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+}
+  
+  /* Styles pour la page Mes notes */
+ 
+  
