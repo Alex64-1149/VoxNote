@@ -9,7 +9,7 @@ Il est à noter l'aide non négligeable du blog de Ketan Doshi (https://ketanhdo
 *Dataset*<br/>
 Le dataset utilisé – The SIWIS French Speech Synthesis Database – peut être retrouvé à l'addresse suivante : https://datashare.ed.ac.uk/handle/10283/2353. Il a été créé par des chercheurs de l'Université d'Édimbourg et contient ~10h de phrases en français séparées en cinq catégories distinctes. Il a l'avantage d'être un des seuls dataset en français qui est gratuit et possède des fichiers détaillés faciles d'utilisation.<br/>
 *Traitement des fichiers audio*<br/>
-Le traitement des fichiers audios s'est fait à l'aide de TorchAudio en utilisant un excellent tutoriel dont on peut retrouver le github à l'addresse suivante : https://github.com/musikalkemist/pytorchforaudio.
+Le traitement des fichiers audios s'est fait à l'aide de TorchAudio en utilisant un excellent tutoriel dont on peut retrouver le github à l'addresse suivante : https://github.com/musikalkemist/pytorchforaudio.<br/>
 *Type d'IA*<br/>
 Le type choisi, un modèle LSTM – long short-term memory –, est une sous catégorie des « Recurrent Neural Network » et est très utile pour les IA ayant besoins d'analyser de l'information séquentielle. Ce type est très bien vulgarisé sur le blog suivant : https://colah.github.io/posts/2015-08-Understanding-LSTMs/. <br/>
 
