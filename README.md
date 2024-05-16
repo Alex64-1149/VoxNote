@@ -18,7 +18,7 @@ Le type choisi, un modèle LSTM – long short-term memory –, est une sous cat
 |époque 3|88,22%|<br/>
 |époque 5|86,95%|<br/>
 |époque 7|85,94%|<br/>
-|époque 9|86,015|<br/>
+|époque 9|86,01%|<br/>
 Après 10 époques, l'IA stagne vers 85% d'erreurs.
 
 *Améliorations potentielles*<br/>
