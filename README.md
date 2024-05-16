@@ -22,7 +22,7 @@ Le type choisi, un modèle LSTM – long short-term memory –, est une sous cat
 Après 10 époques, l'IA stagne vers 85% d'erreurs.
 
 *Améliorations potentielles*<br/>
-Il est a noter que le dataset comprend des valeurs qui sont toutes de même taille alors que les phrases enregistrées ne le sont pas. De même le nombre de valeurs inférées maximum est à 128 ; rendre variables ces valeurs – surtout celles du dataset – pourraient grandement améliorer les performances. De plus, l'approche la plus souvent utilisée est celle d'un LSTM associé à un CNN de quelques profondeurs ; ce qui n'a pas été fait dans ce projet nous introduisant à l'IA même si les performances en sont améliorées. Finalement, nous avons utilisé le GreedySearch lors de l'inférence même si le BeamSearch peut fournir de bien meilleurs résultats par manque de temps ainsi que par manque de «language model» en français.
+Il est à noter que le dataset comprend des valeurs qui sont toutes de même taille alors que les phrases enregistrées ne le sont pas. De même le nombre de valeurs inférées maximum est à 128 ; rendre variables ces valeurs – surtout celles du dataset – pourraient grandement améliorer les performances. De plus, l'approche la plus souvent utilisée est celle d'un LSTM associé à un CNN de quelques profondeurs ; ce qui n'a pas été fait dans ce projet nous introduisant à l'IA même si les performances en sont améliorées. Finalement, nous avons utilisé le GreedySearch lors de l'inférence même si le BeamSearch peut fournir de bien meilleurs résultats par manque de temps ainsi que par manque de «language model» en français.
 
 **Informations sur le site web**
 
